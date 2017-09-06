@@ -1,0 +1,6 @@
+<div class="todo-list" *ngIf="todos.length">
+	<!-- [todo] - свойство компонента todo-item
+		 "todo" - локальная переменная из ngFor 
+		 Нужно для того, чтобы выводился список задач -->
+	<todo-item *ngFor="let todo of todos" [todo]="todo" (delete)="delete($event)" (toggle)="toggle($event)"></todo-item>
+</div>

@@ -1,0 +1,22 @@
+<!-- Первый вариант - текст остается в поле ввода -->
+<!-- <form class="todo-form" (submit)="create($event, titleInput.value)">
+	<input type="text" placeholder="Добавьте еще одно дело!" #titleInput>
+	<button type="submit">Добавить</button>
+</form> -->
+
+<!-- Второй вариант - передача HTMLInputElement как аргумент -->
+<!-- <form class="todo-form" (submit)="create($event, titleInput)">
+	<input type="text" placeholder="Добавьте еще одно дело!" #titleInput>
+	<button type="submit">Добавить</button>
+</form> -->
+	
+<!-- Третий варик - использование двухсторонней привязки -->
+<!-- <form class="todo-form" (ngSubmit)="create(); todoForm.reset()" #todoForm="ngForm">
+	<input type="text" name="title" [(ngModel)]="newTodoTitle" placeholder="Добавьте еще одно дело!" required>
+	<button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
+</form> -->
+
+<form class="todo-form" (ngSubmit)="onSubmit(); todoForm.reset()" #todoForm="ngForm">
+	<input type="text" name="title" [(ngModel)]="title" placeholder="Добавьте еще одно дело!" required>
+	<button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
+</form>

@@ -1,0 +1,30 @@
+<!-- Первый вариант добавления класса
+<div class="todo-item" *ngFor="let todo of todos" [class.completed]="todo.completed"> -->
+
+<!-- Второй вариант - для массива классов-->
+<div class="todo-item" [ngClass]=" { 'completed' : todo.completed } ">
+
+	<button class="checkbox icon" (click)="onToggle()">
+		<!-- Первый вариант добавления нужной иконки
+		<i *ngIf="todo.completed == 0" class="material-icons">check_box_outline_blank</i>
+		<i *ngIf="todo.completed !=0" class="material-icons">check_box</i> -->
+
+		<!-- Второй вариант
+		<i class="material-icons">{{ todo.completed ? 'check_box' : 'check_box_outline_blank' }}</i> -->
+
+		<!-- Третий вариант
+		<i class="material-icons" [innerText]="todo.completed ? 'check_box' : 'check_box_outline_blank'"></i> -->
+
+		<!-- Четвертый вариант -->
+		<i class="material-icons" [textContent]="todo.completed ? 'check_box' : 'check_box_outline_blank'"></i>
+	</button>
+
+	<!-- Заметка - что нужно сделать -->
+	<span class="title">{{ todo.title }}</span>
+
+	<div class="actions" (click)="onDelete()">
+		<button class="delete icon">
+			<i class="material-icons">delete</i>
+		</button>
+	</div>
+</div>
